@@ -13,6 +13,7 @@ library(tidyverse)
 library(palmerpenguins)
 library(plotly)
 library(DT)
+library(here)
 
 # install.packages("package_name") in console
 ```
@@ -42,4 +43,16 @@ and continues it's interactiveability in the knitted document
 ```{r}
 datatable(penguins)
 ```
+
+Make a column graph (using geom_bar) (which does counts for me) of counts of penguins by island, with fill color indicationg penguin species. Then we're going to save that using 'ggsave()'
+
+```{r}
+ggplot(data = penguins, aes(x = island)) + geom_bar(aes(fill = species))
+
+
+ggsave(here("final_figures", "island_counts.png")) # default is apply save to last plot, but you can tell it if you want it to save a different one, you can use here to tell it where you want it to save it, and this is where you come up with the name and tell it the type, .png
+```
+You can search things in the consule by writing "?itemyouwanttosearch"
+
+You should never feel very compelled to save an image, but they can be useful, now that there is a file within that folder, now it shows up in the git tab, before since it was empty it wouldn't show up
 
